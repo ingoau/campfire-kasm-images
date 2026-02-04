@@ -12,7 +12,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && apt upgrade -y
 
-RUN apt install -y iputils-ping git firefox
+RUN apt install -y iputils-ping git
 
 # Install gamemaker
 RUN set -eux; \
@@ -50,3 +50,4 @@ RUN rm -f $HOME/.local/bin/{ncat,proot-apps,proot,jq} && \
 
 ENV PATH="$HOME/.local/bin:$PATH"
 RUN proot-apps install gui
+RUN proot-apps install firefox
