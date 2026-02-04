@@ -12,7 +12,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && apt upgrade -y
 
-RUN apt install -y ping git
+RUN apt install -y iputils-ping git
 
 # Install gamemaker
 RUN curl "https://gamemaker.io/en/download/ubuntu/beta/GameMaker.zip" -o GameMaker.deb && \
