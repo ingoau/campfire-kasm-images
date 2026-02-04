@@ -15,12 +15,18 @@ RUN apt update && apt upgrade -y
 RUN apt install -y iputils-ping git
 
 # Install gamemaker
-RUN curl "https://gamemaker.io/en/download/ubuntu/beta/GameMaker.zip" -o GameMaker.deb && \
-    apt install -y ./GameMaker.deb && \
-    rm GameMaker.deb
+RUN set -eux; \
+    apt-get install -y --no-install-recommends ca-certificates curl; \
+    curl -fL --retry 5 --retry-delay 2 \
+    "https://gamemaker.io/en/download/ubuntu/beta/GameMaker.zip" \
+    -o /tmp/gamemaker.deb; \
+    dpkg-deb -I /tmp/gamemaker.deb >/dev/null; \
+    apt-get update; \
+    apt-get install -y /tmp/gamemaker.deb; \
+    rm -f /tmp/gamemaker.deb; \
 
-# Install shiftkey/github desktop
-RUN wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null
+    # Install shiftkey/github desktop
+    RUN wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null
 RUN sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'
 RUN sudo apt update && sudo apt install github-desktop -y
 
