@@ -50,4 +50,5 @@ RUN rm -f $HOME/.local/bin/{ncat,proot-apps,proot,jq} && \
 
 ENV PATH="$HOME/.local/bin:$PATH"
 RUN proot-apps install gui
+RUN sed -i 's/^Name=.*/Name=App Store Thingy/' ~/Desktop/gui-pa.desktop
 RUN proot-apps install firefox
