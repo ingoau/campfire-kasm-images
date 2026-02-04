@@ -34,7 +34,6 @@ RUN sudo apt update && sudo apt install github-desktop -y
 
 RUN touch $HOME/Desktop/hello.txt
 
-
 ######### End Customizations ###########
 
 RUN chown 1000:0 $HOME
@@ -45,3 +44,10 @@ WORKDIR $HOME
 RUN mkdir -p $HOME && chown -R 1000:0 $HOME
 
 USER 1000
+
+# Install proot-apps
+RUN rm -f $HOME/.local/bin/{ncat,proot-apps,proot,jq} && \
+    mkdir -p $HOME/.local/bin && \
+    curl -L https://github.com/linuxserver/proot-apps/releases/download/$(curl -sX GET "https://api.github.com/repos/linuxserver/proot-apps/releases/latest" | awk '/tag_name/{print $4;exit}' FS='[""]')/proot-apps-$(uname -m).tar.gz | tar -xzf - -C $HOME/.local/bin/
+
+ENV PATH="$HOME/.local/bin:$PATH"
