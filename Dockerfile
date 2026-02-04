@@ -8,6 +8,9 @@ WORKDIR $HOME
 
 ######### Customize Container Here ###########
 
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt update && apt upgrade -y
 
 RUN touch $HOME/Desktop/hello.txt
 
