@@ -12,6 +12,13 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && apt upgrade -y
 
+RUN apt install -y ping
+
+# Install gamemaker
+RUN curl "https://gamemaker.io/en/download/ubuntu/beta/GameMaker.zip" -o GameMaker.deb && \
+    apt install -y ./GameMaker.deb && \
+    rm GameMaker.deb
+
 RUN touch $HOME/Desktop/hello.txt
 
 
