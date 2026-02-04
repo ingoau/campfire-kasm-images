@@ -12,7 +12,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && apt upgrade -y
 
-RUN apt install -y iputils-ping git
+RUN apt install -y iputils-ping git firefox
 
 # Install gamemaker
 RUN set -eux; \
@@ -31,8 +31,6 @@ RUN wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo 
 RUN wget -qO - https://mirror.mwt.me/shiftkey-desktop/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/mwt-desktop.gpg > /dev/null
 RUN sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/mwt-desktop.gpg] https://mirror.mwt.me/shiftkey-desktop/deb/ any main" > /etc/apt/sources.list.d/mwt-desktop.list'
 RUN sudo apt update && sudo apt install github-desktop -y
-
-RUN touch $HOME/Desktop/hello.txt
 
 ######### End Customizations ###########
 
