@@ -51,3 +51,4 @@ RUN rm -f $HOME/.local/bin/{ncat,proot-apps,proot,jq} && \
     curl -L https://github.com/linuxserver/proot-apps/releases/download/$(curl -sX GET "https://api.github.com/repos/linuxserver/proot-apps/releases/latest" | awk '/tag_name/{print $4;exit}' FS='[""]')/proot-apps-$(uname -m).tar.gz | tar -xzf - -C $HOME/.local/bin/
 
 ENV PATH="$HOME/.local/bin:$PATH"
+RUN proot-apps install gui
