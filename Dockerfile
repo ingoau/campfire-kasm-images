@@ -22,7 +22,7 @@ RUN curl "https://gamemaker.io/en/download/ubuntu/beta/GameMaker.zip" -o GameMak
 # Install shiftkey/github desktop
 RUN wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null
 RUN sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'
-RUN sudo apt update && sudo apt install github-desktop
+RUN sudo apt update && sudo apt install github-desktop -y
 
 RUN touch $HOME/Desktop/hello.txt
 
