@@ -1,4 +1,4 @@
-FROM kasmweb/debian-trixie-desktop:1.18.0-rolling-weekly
+FROM kasmweb/core-debian-trixie:1.18.0-rolling-weekly
 USER root
 
 ENV HOME /home/kasm-default-profile
