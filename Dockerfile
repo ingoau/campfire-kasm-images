@@ -53,4 +53,3 @@ RUN rm -f $HOME/.local/bin/{ncat,proot-apps,proot,jq} && \
 
 ENV PATH="$HOME/.local/bin:$PATH"
 RUN proot-apps install gui
-RUN proot-apps install firefox
