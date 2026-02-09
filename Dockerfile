@@ -8,11 +8,14 @@ WORKDIR $HOME
 
 ######### Customize Container Here ###########
 
+# Disable interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
 
+# Update package lists and upgrade packages
 RUN apt update && apt upgrade -y
 
-RUN apt install -y iputils-ping git
+# Install useful utils
+RUN apt install -y iputils-ping git firefox-esr
 
 # Install gamemaker
 RUN set -eux; \
