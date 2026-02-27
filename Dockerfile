@@ -36,6 +36,7 @@ RUN sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/mwt-desktop.
 RUN sudo apt update && sudo apt install github-desktop -y
 
 RUN sudo apt install -y nautilus
+RUN sudo apt remove -y thunar
 
 # Allow kasm-user to use sudo without password
 RUN echo 'kasm-user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
