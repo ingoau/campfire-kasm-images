@@ -35,6 +35,8 @@ RUN wget -qO - https://mirror.mwt.me/shiftkey-desktop/gpgkey | gpg --dearmor | s
 RUN sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/mwt-desktop.gpg] https://mirror.mwt.me/shiftkey-desktop/deb/ any main" > /etc/apt/sources.list.d/mwt-desktop.list'
 RUN sudo apt update && sudo apt install github-desktop -y
 
+RUN sudo apt install -y nautilus
+
 # Allow kasm-user to use sudo without password
 RUN echo 'kasm-user ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
